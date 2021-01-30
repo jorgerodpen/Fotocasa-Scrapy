@@ -29,3 +29,9 @@
 	- Other possible extra features listed in the page
 	
 # Packages
+**Python Version**: 3.8.3
+**Packages used**: Scrapy, numpy
+**Requirements**: <code>pip install -r requirements.txt</code>
+
+# How to run the scraper
+1. Open the terminal and go to the same folder where the folder **FotocasaScraper** and **scrapy.cfg** are stored
