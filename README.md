@@ -30,8 +30,27 @@
 	
 # Packages
 **Python Version**: 3.8.3
+
 **Packages used**: Scrapy, numpy
+
 **Requirements**: <code>pip install -r requirements.txt</code>
 
 # How to run the scraper
-1. Open the terminal and go to the same folder where the folder **FotocasaScraper** and **scrapy.cfg** are stored
+1. Open the terminal and go to the same folder where the folder **FotocasaScraper** and **scrapy.cfg** are stored.
+2. Run the following command in the terminal: <code>scrapy crawl FotoCasa -o file_name.csv</code>
+	- Other supported formats are *.json* and *.xml*.
+
+## Changing the location
+To change the location where you want to scrape the data you need to follow the next steps:
+1. Go to the main page of [Fotocasa](https://www.fotocasa.es/es/) 
+2. In the *rent tab* (**Alquilar** in Spanish) type the name of the place you want to scrape the data. 
+3. Press enter or click the search button.
+4. Copy the link of the page after performing the search 
+5. Go to FotocasaScraper/spiders and open fotocasa.py
+6. Paste the url in the variable called <code>start_urls</code>. 
+
+Your final code should look like this:
+
+<code>start_urls = ['https://www.your_new_fotocasa_url.com']</code>
+
+**WARNING!!** Do not delete the tab before the variable otherwise the scraper won't work. 
