@@ -23,10 +23,7 @@ class FotoCasaSpider(scrapy.Spider):
             
         # Moving to the next page
         next_page = response.xpath('//li[contains(@class,"sui-MoleculePagination-item")][last()]/a/@href').get()
-        print("The next page is :", next_page)
         if next_page is not None:
-            FotoCasaSpider.page = FotoCasaSpider.page + 1
-            print("Scraped page ", FotoCasaSpider.page)
             yield response.follow(next_page, callback = self.parse)
 
 
@@ -64,11 +61,11 @@ class FotoCasaSpider(scrapy.Spider):
         # Initial features
         features = response.css('.re-DetailHeader-featuresItemIcon+ span')
         for feature in features:
-            feature_text = feature.xpath('./text()').extract_first().replace(" ","").replace("s","")
-            # Replacing the feature to a column
+            feature_text = feature.xpath('./text()').extract_first().replace(" ","").replace("s","").replace("terreno","")
+            list_omit = ["Entreuelo","Bajo","Sótano","Principal","Subótano","Superior"]
             for i in range(len(cols_en)):
                 feature_text = feature_text.replace(cols_sp[i],cols_en[i])
-            if (feature_text == "Entreuelo") or (feature_text == "Bajo") or (feature_text == "Sótano"):
+            if sum([i in feature_text for i in list_omit])>0:
                 pass
             else:
                 items[feature_text] = feature.xpath('./span/text()').extract_first()
