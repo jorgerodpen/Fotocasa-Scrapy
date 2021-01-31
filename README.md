@@ -36,9 +36,10 @@
 **Requirements**: <code>pip install -r requirements.txt</code>
 
 # How to run the scraper
-1. Open the terminal and go to the same folder where the folder **FotocasaScraper** and **scrapy.cfg** are stored.
+1. Open the terminal and go to the same folder where the folder **FotocasaScraper** and **scrapy.cfg** are stored. **It needs to be that folder!**
 2. Run the following command in the terminal: <code>scrapy crawl FotoCasa -o file_name.csv</code>
 	- Other supported formats are *.json* and *.xml*.
+3- After running the command, the file should be created in the same folder you run it. 
 
 ## Changing the location
 To change the location where you want to scrape the data you need to follow the next steps:
