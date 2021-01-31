@@ -54,4 +54,7 @@ Your final code should look like this:
 
 <code>start_urls = ['https://www.your_new_fotocasa_url.com']</code>
 
-**WARNING!!** Do not delete the tab before the variable otherwise the scraper won't work. 
+**WARNING!!** Do not delete the tab before the variable otherwise the scraper won't work.
+
+# Note
+This scraper works for any kind of search in Fotocasa (buy, rent, share,...) in any of its locations. As of today, the items it extracts are adapted to the rent tab (**Alquiler** in Spanish). An adaptation to the other tabs should be fairly easy.  
