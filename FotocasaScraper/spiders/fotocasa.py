@@ -12,12 +12,12 @@ class FotoCasaSpider(scrapy.Spider):
         items = FotocasascraperItem()
 
         # Looping over each property
-        property_cards = response.xpath('//article//a[contains(@class,"re-Card-link")]')
+        property_cards = response.css('.re-Card-link')
     
-        for card in property_cards:            
+        for card in property_cards: 
             # Url
-            url = card.css('::attr(href)').get()
-            neighborhood = card.css('.re-Card-title::text').extract_first().split(', ')[-1]
+            url = card.css('::attr(href)').extract_first()
+            neighborhood = card.css('.re-Card-title::text').extract_first()
             # Entering the url
             yield response.follow(url, callback = self.parse_rent, cb_kwargs=dict(items = items, neighborhood = neighborhood))  
             
@@ -25,7 +25,6 @@ class FotoCasaSpider(scrapy.Spider):
         next_page = response.xpath('//li[contains(@class,"sui-MoleculePagination-item")][last()]/a/@href').get()
         if next_page is not None:
             yield response.follow(next_page, callback = self.parse)
-
 
     def parse_rent(self, response, items, neighborhood):
         # Filling all columns
@@ -43,7 +42,6 @@ class FotoCasaSpider(scrapy.Spider):
         # Neighborhood
         items['Neighborhood'] = neighborhood
         items['url'] = response.request.url
-        
         # Price
         items['Price'] = response.css('.re-DetailHeader-price::text').extract_first()
         
