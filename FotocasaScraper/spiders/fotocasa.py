@@ -36,8 +36,8 @@ class FotoCasaSpider(scrapy.Spider):
                 "Emisiones","ConsumoEnergía","Extra","Planta","Amueblado","Calefacción",
                 "Barrio","Orientación","Parking","Mascotas","Fotos","Precio","hab.",
                 "m²","Título","TipoDeInmueble","url","AguaCaliente"]
-        for key in cols_en:
-            items[key] = np.nan
+        for item in items:
+            items[item] = np.nan
             
         # Neighborhood
         items['Neighborhood'] = neighborhood
@@ -50,7 +50,30 @@ class FotoCasaSpider(scrapy.Spider):
         items['Title'] = title
         
         # Extra features
-        items["Extra"] = "-".join(response.css('li.re-DetailExtras-listItem::text').extract())
+        extras = "-".join(response.css('li.re-DetailExtras-listItem::text').extract())
+        items["Extra"] = extras
+        if 'Aire acondicionado' in extras:
+            items["Air_Conditioning"] = 1
+        if 'Cocina Equipada' in extras:
+            items["Equipped_Kitchen"] = 1
+        if 'Parquet' in extras:
+            items["Parquet"] = 1
+        if 'Serv. portería' in extras:
+            items["Concierge"] = 1
+        if 'Terraza' in extras:
+            items["Terrace"] = 1
+        if 'Ensuite' in extras:
+            items["Ensuite"] = 1
+        if 'Trastero' in extras:
+            items["Storeroom"] = 1
+        if 'Balcón' in extras:
+            items["Balcony"] = 1
+        if 'Z. Comunitaria' in extras:
+            items["Community_Zone"] = 1
+        if 'Internet' in extras:
+            items["Internet"] = 1
+        if 'Piscina' in extras:
+            items["Swimming_Pool"] = 1
         
         # Number of photos
         photos = response.css('.re-DetailMosaic-actionsButton ::text').extract_first()
