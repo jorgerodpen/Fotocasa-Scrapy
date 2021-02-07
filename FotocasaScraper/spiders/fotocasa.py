@@ -52,26 +52,6 @@ class FotoCasaSpider(scrapy.Spider):
         # Extra features
         extras = "-".join(response.css('li.re-DetailExtras-listItem::text').extract())
         items["Extra"] = extras
-        if 'Aire acondicionado' in extras:
-            items["Air_Conditioning"] = 1
-        if ('Cocina Equipada' in extras) or ('Electrodomésticos' in extras):
-            items["Equipped_Kitchen"] = 1
-        if 'Parquet' in extras:
-            items["Parquet"] = 1
-        if 'Serv. portería' in extras:
-            items["Concierge"] = 1
-        if 'Terraza' in extras:
-            items["Terrace"] = 1
-        if 'Trastero' in extras:
-            items["Storeroom"] = 1
-        if 'Balcón' in extras:
-            items["Balcony"] = 1
-        if 'Z. Comunitaria' in extras:
-            items["Community_Zone"] = 1
-        if 'Internet' in extras:
-            items["Internet"] = 1
-        if 'Piscina' in extras:
-            items["Swimming_Pool"] = 1
         
         # Number of photos
         photos = response.css('.re-DetailMosaic-actionsButton ::text').extract_first()
