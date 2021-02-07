@@ -37,7 +37,7 @@ class FotoCasaSpider(scrapy.Spider):
                 "Barrio","Orientación","Parking","Mascotas","Fotos","Precio","hab.",
                 "m²","Título","TipoDeInmueble","url","AguaCaliente"]
         for item in items:
-            items[item] = -9999
+            items[item] = np.nan
             
         # Neighborhood
         items['Neighborhood'] = neighborhood
