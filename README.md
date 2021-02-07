@@ -27,7 +27,8 @@
 	- Emissions
 	- Energy consumption
 	- Other possible extra features listed in the page
-	
+- Missing values are stored in the output dataset as -9999. 
+
 # Packages
 **Python Version**: 3.8.3
 

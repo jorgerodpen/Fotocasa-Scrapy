@@ -37,7 +37,7 @@ class FotoCasaSpider(scrapy.Spider):
                 "Barrio","Orientación","Parking","Mascotas","Fotos","Precio","hab.",
                 "m²","Título","TipoDeInmueble","url","AguaCaliente"]
         for item in items:
-            items[item] = np.nan
+            items[item] = -9999
             
         # Neighborhood
         items['Neighborhood'] = neighborhood
@@ -54,7 +54,7 @@ class FotoCasaSpider(scrapy.Spider):
         items["Extra"] = extras
         if 'Aire acondicionado' in extras:
             items["Air_Conditioning"] = 1
-        if 'Cocina Equipada' in extras:
+        if ('Cocina Equipada' in extras) or ('Electrodomésticos' in extras):
             items["Equipped_Kitchen"] = 1
         if 'Parquet' in extras:
             items["Parquet"] = 1
@@ -62,8 +62,6 @@ class FotoCasaSpider(scrapy.Spider):
             items["Concierge"] = 1
         if 'Terraza' in extras:
             items["Terrace"] = 1
-        if 'Ensuite' in extras:
-            items["Ensuite"] = 1
         if 'Trastero' in extras:
             items["Storeroom"] = 1
         if 'Balcón' in extras:
@@ -95,6 +93,7 @@ class FotoCasaSpider(scrapy.Spider):
         features2 = response.css('.re-DetailFeaturesList-featureContent')
         for feature in features2:
             feature_text = feature.xpath('./p[1]/text()').extract_first().title().replace(" ","")
+            print(feature_text)
             for i in range(len(cols_en)):
                 feature_text = feature_text.replace(cols_sp[i],cols_en[i])
             if (feature_text == "Energy_Consumption") or (feature_text == "Emissions"):

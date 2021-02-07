@@ -19,7 +19,6 @@ class FotocasascraperItem(scrapy.Item):
     Elevator = scrapy.Field()
     Emissions = scrapy.Field()
     Energy_Consumption = scrapy.Field()
-    Ensuite = scrapy.Field()
     Equipped_Kitchen = scrapy.Field()
     Extra = scrapy.Field()
     Floor = scrapy.Field()
