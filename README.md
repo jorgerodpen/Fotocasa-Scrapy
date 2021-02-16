@@ -3,31 +3,29 @@
 - Extracts information for every listed property for a certain search in the **rent section** (*Alquilar* in Spanish). 
 - Used [Scrapy](https://scrapy.org/) to build it
 - The scraper extracts the following elements:
-	- Title 
-	- Type of property	
-	- url
 	- Price
+	- Neighborhood
+	- Type of house
+	- Size
 	- Number of rooms
 	- Number of bathrooms
-	- Size
-	- Floor
 	- Antiquity
-	- Community expenses (y/n)
-	- Condition of the property
-	- Deposit (y/n)
-	- Elevator (y/n)
+	- Condition
+	- Emissions 
+	- Energy_Consumption
+	- Floor
 	- Furnished (y/n)
-	- Neighborhood
-	- Orientation
-	- Parking (y/n)
-	- Pets (y/n)
-	- Photos  
+	- Elevator (y/n)
+	- Parking
+	- Community expenses included (y/n)
+	- Deposit (y/n)
 	- Heating
-	- Water_Heater
-	- Emissions
-	- Energy consumption
-	- Other possible extra features listed in the page
-- Missing values are stored in the output dataset as -9999. 
+	- Orientation
+	- Pets
+	- Type of water heater
+	- Number of photos included in the add
+	- Title of the add
+	- url of the add
 
 # Packages
 **Python Version**: 3.8.3
